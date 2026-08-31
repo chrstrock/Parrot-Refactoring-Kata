@@ -2,11 +2,9 @@ package parrot;
 
 public abstract class Parrot {
 
-    protected final double voltage;
     protected final boolean isNailed;
 
-    protected Parrot(double voltage, boolean isNailed) {
-        this.voltage = voltage;
+    protected Parrot(boolean isNailed) {
         this.isNailed = isNailed;
     }
 
