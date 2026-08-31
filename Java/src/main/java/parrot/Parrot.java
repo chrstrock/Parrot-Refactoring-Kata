@@ -17,7 +17,7 @@ public class Parrot {
     public static Parrot createParrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, boolean isNailed) {
         return switch (type) {
             case EUROPEAN -> new EuropeanParrot(numberOfCoconuts, voltage, isNailed);
-            case AFRICAN -> new Parrot(type, numberOfCoconuts, voltage, isNailed);
+            case AFRICAN -> new AfricanParrot(numberOfCoconuts, voltage, isNailed);
             case NORWEGIAN_BLUE -> new Parrot(type, numberOfCoconuts, voltage, isNailed);
         };
     }
