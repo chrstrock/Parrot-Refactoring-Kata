@@ -2,10 +2,7 @@ package parrot;
 
 public abstract class Parrot {
 
-    protected final boolean isNailed;
-
-    protected Parrot(boolean isNailed) {
-        this.isNailed = isNailed;
+    protected Parrot() {
     }
 
     public abstract double getSpeed();

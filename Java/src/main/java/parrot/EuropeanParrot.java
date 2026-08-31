@@ -2,8 +2,10 @@ package parrot;
 
 public class EuropeanParrot extends Parrot {
 
-    public EuropeanParrot(boolean isNailed) {
-        super(isNailed);
+    protected boolean isNailed;
+
+    public EuropeanParrot() {
+        super();
     }
 
     @Override

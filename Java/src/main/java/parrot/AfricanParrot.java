@@ -3,8 +3,8 @@ package parrot;
 public class AfricanParrot extends Parrot {
     protected int numberOfCoconuts;
 
-    protected AfricanParrot(int numberOfCoconuts, boolean isNailed) {
-        super(isNailed);
+    protected AfricanParrot(int numberOfCoconuts) {
+        super();
         this.numberOfCoconuts = numberOfCoconuts;
     }
 
