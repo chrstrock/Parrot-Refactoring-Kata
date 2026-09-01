@@ -5,10 +5,10 @@ import kotlin.math.min
 
 open class Parrot {
 
-    private val type: ParrotTypeEnum
-    private val numberOfCoconuts: Int
-    private val voltage: Double
-    private val isNailed: Boolean
+    protected val type: ParrotTypeEnum
+    protected val numberOfCoconuts: Int
+    protected val voltage: Double
+    protected val isNailed: Boolean
 
     constructor(type: ParrotTypeEnum, numberOfCoconuts: Int, voltage: Double, isNailed: Boolean) {
         this.type = type
@@ -17,20 +17,13 @@ open class Parrot {
         this.isNailed = isNailed
     }
 
-    val speed: Double
-        get() = when (type) {
-            ParrotTypeEnum.EUROPEAN -> baseSpeed
-            ParrotTypeEnum.AFRICAN -> max(0.0, baseSpeed - loadFactor * numberOfCoconuts)
-            ParrotTypeEnum.NORWEGIAN_BLUE -> if (isNailed) 0.0 else getBaseSpeed(voltage)
-        }
-
-    private val loadFactor: Double
+    protected val loadFactor: Double
         get() = 9.0
 
-    private val baseSpeed: Double
+    protected val baseSpeed: Double
         get() = 12.0
 
-    private fun getBaseSpeed(voltage: Double): Double = min(24.0, voltage * baseSpeed)
+    protected fun getBaseSpeed(voltage: Double): Double = min(24.0, voltage * baseSpeed)
 
     val cry: String
         get() = when (type) {
@@ -39,5 +32,11 @@ open class Parrot {
             ParrotTypeEnum.NORWEGIAN_BLUE ->
                 if (voltage > 0) "Bzzzzzz"
                 else "..."
+        }
+    val speed: Double
+        get() = when (type) {
+            ParrotTypeEnum.EUROPEAN -> baseSpeed
+            ParrotTypeEnum.AFRICAN -> max(0.0, baseSpeed - loadFactor * numberOfCoconuts)
+            ParrotTypeEnum.NORWEGIAN_BLUE -> if (isNailed) 0.0 else getBaseSpeed(voltage)
         }
 }
