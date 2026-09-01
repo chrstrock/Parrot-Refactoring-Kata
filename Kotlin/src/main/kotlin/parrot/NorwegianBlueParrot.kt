@@ -7,4 +7,9 @@ class NorwegianBlueParrot : Parrot {
         voltage,
         isNailed
     )
+
+    override val speed: Double = if (isNailed) 0.0 else getBaseSpeed(voltage)
+    override val cry: String =
+        if (voltage > 0) "Bzzzzzz"
+        else "..."
 }

@@ -1,9 +1,8 @@
 package parrot
 
-import kotlin.math.max
 import kotlin.math.min
 
-open class Parrot {
+abstract class Parrot {
 
     protected val type: ParrotTypeEnum
     protected val numberOfCoconuts: Int
@@ -25,18 +24,6 @@ open class Parrot {
 
     protected fun getBaseSpeed(voltage: Double): Double = min(24.0, voltage * baseSpeed)
 
-    val cry: String
-        get() = when (type) {
-            ParrotTypeEnum.EUROPEAN -> "Sqoork!"
-            ParrotTypeEnum.AFRICAN -> "Sqaark!"
-            ParrotTypeEnum.NORWEGIAN_BLUE ->
-                if (voltage > 0) "Bzzzzzz"
-                else "..."
-        }
-    val speed: Double
-        get() = when (type) {
-            ParrotTypeEnum.EUROPEAN -> baseSpeed
-            ParrotTypeEnum.AFRICAN -> max(0.0, baseSpeed - loadFactor * numberOfCoconuts)
-            ParrotTypeEnum.NORWEGIAN_BLUE -> if (isNailed) 0.0 else getBaseSpeed(voltage)
-        }
+    abstract val cry: String
+    abstract val speed: Double
 }
