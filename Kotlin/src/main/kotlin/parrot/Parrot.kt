@@ -3,12 +3,19 @@ package parrot
 import kotlin.math.max
 import kotlin.math.min
 
-open class Parrot(
-    private val type: ParrotTypeEnum,
-    private val numberOfCoconuts: Int,
-    private val voltage: Double,
+open class Parrot {
+
+    private val type: ParrotTypeEnum
+    private val numberOfCoconuts: Int
+    private val voltage: Double
     private val isNailed: Boolean
-) {
+
+    constructor(type: ParrotTypeEnum, numberOfCoconuts: Int, voltage: Double, isNailed: Boolean) {
+        this.type = type
+        this.numberOfCoconuts = numberOfCoconuts
+        this.voltage = voltage
+        this.isNailed = isNailed
+    }
 
     val speed: Double
         get() = when (type) {
