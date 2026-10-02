@@ -1,15 +1,21 @@
 package parrot
 
-class NorwegianBlueParrot : Parrot {
-    constructor(numberOfCoconuts: Int, voltage: Double, isNailed: Boolean) : super(
-        type = ParrotTypeEnum.NORWEGIAN_BLUE,
-        numberOfCoconuts,
-        voltage,
-        isNailed
-    )
+import kotlin.math.min
 
-    override val speed: Double = if (isNailed) 0.0 else getBaseSpeed(voltage)
+class NorwegianBlueParrot(numberOfCoconuts: Int, private var voltage: Double, isNailed: Boolean) : Parrot(
+    type = ParrotTypeEnum.NORWEGIAN_BLUE,
+    numberOfCoconuts,
+    isNailed
+) {
+
+
+    override val speed: Double = if (isNailed) {
+        0.0
+    } else {
+        min(24.0, this.voltage * baseSpeed)
+    }
     override val cry: String =
-        if (voltage > 0) "Bzzzzzz"
+        if (this.voltage > 0) "Bzzzzzz"
         else "..."
+
 }
